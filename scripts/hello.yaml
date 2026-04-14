@@ -1,0 +1,17 @@
+name: hello
+description: "名前と挨拶の言葉を指定してメッセージを生成する（動作確認用サンプル）"
+timeout: 10
+packages: []
+
+parameters:
+  type: object
+  properties:
+    name:
+      type: string
+      description: "挨拶する相手の名前"
+    greeting:
+      type: string
+      description: "挨拶の言葉（省略時: Hello）"
+      default: "Hello"
+  required:
+    - name

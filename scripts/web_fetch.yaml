@@ -1,0 +1,25 @@
+name: web_fetch
+description: "指定URLのコンテンツを取得してテキストを返す。ネットワークアクセスあり"
+timeout: 30
+packages:
+  - requests
+  - beautifulsoup4
+
+# このスクリプトはネットワークが必要なため bridge モードで実行
+docker:
+  network: bridge
+
+parameters:
+  type: object
+  properties:
+    url:
+      type: string
+      description: "取得するURL（https:// から始まる形式）"
+    text_only:
+      type: boolean
+      description: "HTML をプレーンテキストに変換するか（デフォルト: true）"
+    max_chars:
+      type: integer
+      description: "返すテキストの最大文字数（デフォルト: 3000）"
+  required:
+    - url

@@ -1,0 +1,17 @@
+name: csv_analyze
+description: "CSVデータの統計情報を分析する。行数・列名・基本統計量・欠損値などを返す"
+timeout: 30
+packages:
+  - pandas
+
+parameters:
+  type: object
+  properties:
+    csv_content:
+      type: string
+      description: "分析するCSVデータ（テキスト形式でそのまま貼り付け）"
+    column:
+      type: string
+      description: "詳細分析したい列名（省略可）"
+  required:
+    - csv_content

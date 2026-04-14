@@ -1,0 +1,6 @@
+# MCP サーバー本体の依存
+mcp>=1.0.0
+pyyaml>=6.0
+
+# Docker SDK（Docker 実行を使う場合）
+docker>=7.0.0

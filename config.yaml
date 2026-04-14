@@ -1,0 +1,24 @@
+# MCP Python Script Wrapper - グローバル設定
+
+server:
+  name: "python-script-runner"
+  version: "1.0.0"
+
+# scripts/ ディレクトリのパス（server.py からの相対パス）
+scripts_dir: "./scripts"
+
+runner:
+  # true: Docker で実行（推奨）、false: subprocess で実行
+  use_docker: true
+
+  docker:
+    # スクリプトのデフォルト実行イメージ
+    default_image: "python:3.12-slim"
+
+    # ネットワークアクセス
+    # "none"   : 完全遮断（セキュリティ最高、デフォルト）
+    # "bridge" : 外部インターネットへアクセス可能
+    network: "none"
+
+    # メモリ上限
+    memory_limit: "256m"

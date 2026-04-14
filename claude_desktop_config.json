@@ -1,0 +1,12 @@
+{
+  "_comment": "このファイルの内容を ~/Library/Application Support/Claude/claude_desktop_config.json の mcpServers に追記してください",
+  "mcpServers": {
+    "python-scripts": {
+      "command": "/path/to/venv/bin/python",
+      "args": [
+        "/path/to/mcp-wrapper/server.py"
+      ],
+      "env": {}
+    }
+  }
+}
