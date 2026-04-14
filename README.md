@@ -4,7 +4,7 @@
 
 **Drop a `.py` + `.yaml` → Instant MCP Tool**
 
-Python スクリプトを置くだけで Claude から呼び出せる MCP ツールになる汎用ラッパー
+Python スクリプトを置くだけで AI エージェントから呼び出せる MCP ツールになる汎用ラッパー
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![MCP](https://img.shields.io/badge/MCP-1.0%2B-blueviolet)](https://modelcontextprotocol.io/)
@@ -22,20 +22,54 @@ scripts/my_tool.yaml   ←  ツール名・説明・パラメータを定義
 scripts/my_tool.py     ←  処理を書く（stdin JSON → stdout JSON）
 ```
 
-この 2 ファイルを置くだけで Claude Desktop から `my_tool` が使えるようになります。
+この 2 ファイルを置くだけで MCP 対応エージェントから `my_tool` が使えるようになります。
 再起動不要。Docker コンテナ内で安全に実行されます。
+
+**対応クライアント:** [Hermes Agent](https://hermes-agent.nousresearch.com/) / [OpenClaw](https://docs.openclaw.ai/) / [Claude Desktop](https://claude.ai/download) など MCP stdio 対応のエージェント全般
 
 ---
 
 ## 🚀 クイックスタート
 
 ```bash
-git clone https://github.com/yourname/mcp-wrapper.git
+git clone https://github.com/zephel01/mcp-wrapper.git
 cd mcp-wrapper
 bash setup.sh
 ```
 
-セットアップ後、表示されるパスを Claude Desktop の設定に追記します。
+### Hermes Agent（推奨）
+
+`~/.hermes/config.json` の `mcp_servers` に追記します。
+
+```json
+{
+  "mcp_servers": {
+    "python-scripts": {
+      "command": "/path/to/mcp-wrapper/.venv/bin/python",
+      "args": ["/path/to/mcp-wrapper/server.py"]
+    }
+  }
+}
+```
+
+起動時に自動検出・登録されます。ツールの変更も hot-reload で即時反映。
+
+### OpenClaw
+
+`openclaw.config.json` に追記します。
+
+```json
+{
+  "mcpServers": {
+    "python-scripts": {
+      "command": "/path/to/mcp-wrapper/.venv/bin/python",
+      "args": ["/path/to/mcp-wrapper/server.py"]
+    }
+  }
+}
+```
+
+### Claude Desktop
 
 ```json
 // ~/Library/Application Support/Claude/claude_desktop_config.json
@@ -82,7 +116,7 @@ if __name__ == "__main__":
     print(json.dumps(main(json.load(sys.stdin)), ensure_ascii=False))
 ```
 
-**それだけ。** Claude Desktop の再起動は不要です。
+**それだけ。** エージェントの再起動は不要です。
 
 ---
 
