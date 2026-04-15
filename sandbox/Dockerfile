@@ -22,9 +22,8 @@ WORKDIR /sandbox
 # pip を最新化（イメージビルド時のみ）
 RUN pip install --no-cache-dir --upgrade pip
 
-# よく使うライブラリをプリインストール（任意）
-# ここに追加すると各スクリプト実行時のインストール時間を節約できる
-# RUN pip install --no-cache-dir pandas requests beautifulsoup4
+# よく使うライブラリをプリインストール
+RUN pip install --no-cache-dir pandas requests beautifulsoup4 aiohttp crawl4ai
 
 # 非 root で実行
 USER sandbox

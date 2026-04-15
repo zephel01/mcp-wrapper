@@ -13,7 +13,7 @@ runner:
 
   docker:
     # スクリプトのデフォルト実行イメージ
-    default_image: "python:3.12-slim"
+    default_image: "mcp-sandbox"
 
     # ネットワークアクセス
     # "none"   : 完全遮断（セキュリティ最高、デフォルト）

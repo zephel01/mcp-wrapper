@@ -1,0 +1,16 @@
+name: my_crawl
+description: "指定した URL のページ内容を Markdown テキストで取得する"
+timeout: 120
+packages: []
+
+docker:
+  network: bridge
+
+parameters:
+  type: object
+  properties:
+    url:
+      type: string
+      description: "取得する URL（https:// から始まる形式）"
+  required:
+    - url
