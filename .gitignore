@@ -38,6 +38,9 @@ htmlcov/
 # Docker
 .docker/
 
+# Docs
+docs/inside
+
 # 一時ファイル
 tmp/
 temp/
