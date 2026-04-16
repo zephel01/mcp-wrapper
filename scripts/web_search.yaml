@@ -1,0 +1,24 @@
+name: web_search
+description: "キーワードで Web 検索し、関連する URL とタイトル・概要の一覧を返す（DuckDuckGo、APIキー不要）"
+timeout: 30
+packages:
+  - ddgs
+
+# ネットワークアクセスが必要なため bridge モードで実行
+docker:
+  network: bridge
+
+parameters:
+  type: object
+  properties:
+    query:
+      type: string
+      description: "検索キーワード（例: 'TypeScript async iterator MDN'）"
+    count:
+      type: integer
+      description: "取得件数（デフォルト: 5、最大: 10）"
+    region:
+      type: string
+      description: "地域コード（デフォルト: 'wt-wt' = 地域なし。日本語優先なら 'jp-jp'）"
+  required:
+    - query
